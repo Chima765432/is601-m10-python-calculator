@@ -38,3 +38,9 @@ def test_home_page_serves_the_calculator():
     response = client.get("/")
     assert response.status_code == 200
     assert 'id="result"' in response.text
+
+
+def test_health_endpoint_reports_ok():
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
